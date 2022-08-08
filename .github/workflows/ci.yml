@@ -28,5 +28,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "cinema-paradise-fe-afs"
           heroku_email: "leo.xiao@oocl.com"
-        env:
-          CI_ENV: development
