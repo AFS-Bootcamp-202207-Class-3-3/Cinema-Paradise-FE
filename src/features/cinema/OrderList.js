@@ -6,7 +6,7 @@ import {initData} from "./OrderSlice";
 
 function OrderList() {
   const dispatch = useDispatch();
-  const orderList=CONTENT.order;
+  const orderList=CONTENT;
 
   useEffect(() => {
       dispatch(initData(orderList));

@@ -1,4 +1,4 @@
-const CONTENT={order:[{
+const CONTENT=[{
     id:12,
     movie_id:1,
     cinema_id:1,
@@ -10,6 +10,6 @@ const CONTENT={order:[{
     score:0,
     comment:""
 }]
-}
+
 
 export default CONTENT;
