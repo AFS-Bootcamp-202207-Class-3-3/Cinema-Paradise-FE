@@ -1,5 +1,6 @@
 import { Col, Row, Radio, Button } from 'antd';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./PurchasePage.css"
 
 function PurchasePage(props) {
@@ -49,14 +50,14 @@ function PurchasePage(props) {
                         </Radio>
                     </Radio.Group>
                     <div>
-                        <Button type="primary">Pay Order</Button>
+                        <Link to="/success"><Button type="primary">Pay Order</Button></Link>
                     </div>
                 </Col>
             </Row>
             <Row hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
                     <div>Please pay your order at least 20 minutes before the movie start.</div>
-                    <Button type="primary">Checkout Order</Button>
+                    <Link to="/order"><Button type="primary">Checkout Order</Button></Link>
                 </Col>
             </Row>
         </>
