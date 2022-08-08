@@ -1,0 +1,18 @@
+[class~='ant-row'] {
+    background: rgba(128, 128, 128, 0.08);
+  }
+
+.image {
+    max-width: 90%;
+    height: auto;
+}
+
+.score{
+    font-size: 60px;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.title{
+    color: #40a9ff
+}
