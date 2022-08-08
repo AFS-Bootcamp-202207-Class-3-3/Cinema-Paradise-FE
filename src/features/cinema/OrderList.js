@@ -1,7 +1,7 @@
 import OrderGroup from "./OrderGroup";
 import { useDispatch} from "react-redux";
 import {useEffect} from"react";
-import CONTENT from "../../content/Content";
+import CONTENT from "./CONTENT";
 import {initData} from "./OrderSlice";
 
 function OrderList() {
