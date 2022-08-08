@@ -1,16 +1,8 @@
 import OrderGroup from "./OrderGroup";
-import { useDispatch} from "react-redux";
-import {useEffect} from"react";
 import CONTENT from "./CONTENT";
-import {initData} from "./OrderSlice";
 
 function OrderList() {
-  const dispatch = useDispatch();
   const orderList=CONTENT;
-
-  useEffect(() => {
-      dispatch(initData(orderList));
-  }, [dispatch]);
 
   return (
     <div>
