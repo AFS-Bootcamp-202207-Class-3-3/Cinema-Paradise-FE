@@ -1,8 +1,9 @@
 import OrderItem from "./OrderItem";
 import "./group.css"
+import CONTENT from "./CONTENT";
 
-function OrderGroup(props) {
-  const { orderList } = props;
+function OrderGroup() {
+  const  orderList  = CONTENT;
   return (
     <div>
       {orderList.map((order) => (

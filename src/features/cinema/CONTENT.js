@@ -1,5 +1,5 @@
 const CONTENT=[{
-    "id":12,
+    "id":"12o",
     "movie_id":1,
     "cinema_id":1,
     "user_id":1,
@@ -10,6 +10,7 @@ const CONTENT=[{
     "score":0,
     "comment":""
 }]
+
 
 
 export default CONTENT;

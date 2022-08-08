@@ -1,21 +1,16 @@
-import {useDispatch} from "react-redux";
-import React, {useState} from "react";
-import {Button, Modal,Col, Row,Divider,Space, Typography} from "antd";
-import {
-    EditOutlined,
-    DeleteOutlined,
-  } from '@ant-design/icons';
+import React from "react";
+import {Col, Row,Divider,Space, Typography} from "antd";
 import "./item.css";
-const { Title,Text, Link } = Typography;
+const { Title,Text } = Typography;
 
 
 
-function OrderItem(props) {
+function OrderItem() {
   return (
     <>
     <Divider orientation="left"/>
     <Row justify="center" >
-      <Col span={3}><img  className="img" src="/assets/img/Lightyear.jpg" ></img></Col>
+      <Col span={3}><img  alt="orderPic" className="img" src="/assets/img/Lightyear.jpg" /></Col>
       <Col span={9}>
       <Title level={3}>湄公河行动</Title>
         <Space direction="vertical">

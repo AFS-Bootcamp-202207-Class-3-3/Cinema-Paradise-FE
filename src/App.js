@@ -1,6 +1,6 @@
 import "./App.css";
 import {  Routes, Route } from "react-router-dom";
-import OrderList from "./features/cinema/OrderList";
+import OrderGroup from "./features/cinema/OrderGroup";
 import About from "./pages/About";
 import Layout from "./layout/Layout";
 import NotFoundPage from "./pages/NotFoundPage"
@@ -13,7 +13,7 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/order" element={<OrderList/>} />
+          <Route path="/order" element={<OrderGroup/>} />
           <Route path="/about" element={<About />} />
           <Route path="/moviedetails" element={<MovieDetails />} />
           <Route path="/purchase" element={<PurchasePage />} />
