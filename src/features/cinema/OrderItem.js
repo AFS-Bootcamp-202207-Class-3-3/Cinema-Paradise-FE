@@ -48,8 +48,8 @@ function OrderItem(props) {
     <Divider orientation="left"/>
     <Row justify="center" >
       {/* <Col span={4}></Col> */}
-      <Col span={2}><img  className="img" src="/assets/img/Lightyear.jpg" ></img></Col>
-      <Col span={10}>
+      <Col span={3}><img  className="img" src="/assets/img/Lightyear.jpg" ></img></Col>
+      <Col span={9}>
       <Title level={3}>湄公河行动</Title>
         <Space direction="vertical">
         <Text>1张-总价：￥45</Text>
