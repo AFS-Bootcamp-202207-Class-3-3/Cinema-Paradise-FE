@@ -1,4 +1,6 @@
 import { Col, Row, Layout, Card } from "antd";
+import MOVIES from "./MOVIES";
+
 const { Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -10,84 +12,29 @@ const style = {
 };
 
 function MovieList() {
+
+    const movieList = MOVIES;
+
     return (
         <Layout>
             <Content>
                 <Row gutter={[16, 16]} justify="space-evenly">
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/MinionsTheRiseofGru.jpg" />}
-                        >
-                            <Meta title="小黄人大眼萌：神偷奶爸前传" description="Minions: The Rise of Gru" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                        <Card
-                            hoverable
-                            style={style}
-                            cover={
-                                <img alt="example" src="/assets/img/Lightyear.jpg" />}
-                        >
-                            <Meta title="光年正传" description="Lightyear" />
-                        </Card>
-                    </Col>
+                    {movieList.map((movie) => (
+                        <Col className="gutter-row" span={6} key={movie.id}>
+                            <Card
+                                hoverable
+                                style={style}
+                                cover={
+                                    <img alt="pic" src={movie.url} />}
+                            >
+                                <Meta title={movie.title} description={movie.description} />
+                            </Card>
+                        </Col>
+                    ))}
                 </Row>
             </Content>
             <Footer>
-                fooooooooooot
+                foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooot
             </Footer>
         </Layout>
     );
