@@ -9,6 +9,7 @@ import PurchasePage from "./features/cinema/PurchasePage";
 import MovieList from "./features/cinema/MovieList";
 import ArrangementList from "./features/cinema/ArrangementList";
 import OrderDetails from "./features/cinema/OrderDetails";
+import CinemaList from "./features/cinema/CinemaList";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/orderdetails" element={<OrderDetails/>} />
           <Route path="/about" element={<About />} />
           <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
+          <Route path="/cinema" element={<CinemaList />} />
           <Route path="/purchase" element={<PurchasePage />} />
           <Route path="/sucess" element={<SucessPaidment/>} />
           <Route path="/" element={<MovieList/>} />

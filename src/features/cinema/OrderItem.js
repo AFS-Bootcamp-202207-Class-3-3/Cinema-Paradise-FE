@@ -5,8 +5,6 @@ const {Title, Text} = Typography;
 
 function OrderItem(props) {
   const order=props.order;
-  
-  console.log(order);
   return (
     <>
       <Divider orientation="left" />
