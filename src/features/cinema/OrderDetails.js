@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
 import {Col, Row, Divider, Space, Typography} from "antd";
 import "./item.css";
-const {Title, Text} = Typography;
+const { Text} = Typography;
 
 function OrderDetails() {
   const currentOrder = useSelector(state=> state.currentOrder);
