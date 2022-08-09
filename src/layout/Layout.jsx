@@ -10,7 +10,8 @@ const Layout = () => {
         <Link to="/orderdetails">order</Link>|{" "}
         <Link to="/moviedetails">moviedetails</Link>|{" "}
         <Link to="/purchase">purchase</Link>|{" "}
-        <Link to="/sucess">sucess</Link>
+        <Link to="/sucess">sucess</Link>|{" "}
+        <Link to="/cinema">cinema</Link>
       </nav>
       <div className="content">
         <Outlet />
