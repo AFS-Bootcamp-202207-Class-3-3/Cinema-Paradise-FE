@@ -46,10 +46,10 @@ function PurchasePage(props) {
                         <Text>Payment Method:</Text>
                         <Radio.Group defaultValue="paypal">
                             <Radio value="paypal">
-                                <img className="payment-logo" src="Paypal-logo.png" alt="paypal-logo" />
+                                <img className="payment-logo" src="/assets/img/Paypal-logo.png" alt="paypal-logo" />
                             </Radio>
                             <Radio value="visa">
-                                <img className="payment-logo" src="Visa-logo.png" alt="visa-logo" />
+                                <img className="payment-logo" src="/assets/img/Visa-logo.png" alt="visa-logo" />
                             </Radio>
                         </Radio.Group>
                         <Text>
