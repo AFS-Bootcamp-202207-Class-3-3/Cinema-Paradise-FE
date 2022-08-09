@@ -2,6 +2,7 @@ import TodoList from "./features/todo/TodoList";
 import About from "./pages/About";
 import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./layout/Layout";
+import MovieDetails from "./features/MovieDetails";
 
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<TodoList />} />
           <Route path="/about" element={<About />} />
+          <Route path="/movie" element={<MovieDetails />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
