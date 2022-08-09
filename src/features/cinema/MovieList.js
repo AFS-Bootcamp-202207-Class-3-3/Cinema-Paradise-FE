@@ -30,7 +30,7 @@ function MovieList() {
             <Content>
                 <Carousel autoplay className="aaaaaaa" style={CAROUSEL_STYLE}>
                     {rotationMovieList.map((movie) => (
-                        <Link to={{ pathname: `/moviedetails/${movie.id}` }}>
+                        <Link to={{ pathname: `/moviedetails/${movie.id}` }} key={movie.id}>
                             <img alt="carouselpic" src={movie.rotationurl} style={CAROUSEL_IMG_STYLE} />
                         </Link>
                     ))}

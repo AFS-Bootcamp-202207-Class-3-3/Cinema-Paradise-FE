@@ -7,7 +7,7 @@ const MOVIES = [
         "rotationurl": "",
     },
     {
-        "id": "2x",
+        "id": "1",
         "title": "光年正传",
         "description": "Lightyear",
         "url": "/assets/img/Lightyear.jpg",
@@ -28,7 +28,7 @@ const MOVIES = [
         "rotationurl": "",
     },
     {
-        "id": "6x",
+        "id": "2",
         "title": "明日战记",
         "description": "Warriors of Future",
         "url": "/assets/img/WarriorsofFuture.jpg",
