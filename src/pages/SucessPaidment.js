@@ -14,7 +14,10 @@ const SucessPaidment = () => {
         Check Detail
       </Button>
       </Link>,
-      <Button key="buy">Buy Again</Button>,
+      <Link to="/">
+     <Button key="buy">Buy Again</Button>
+      </Link>,
+    
     ]}
   />
   );
