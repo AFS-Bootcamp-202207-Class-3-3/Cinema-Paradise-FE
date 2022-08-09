@@ -1,7 +1,9 @@
-import { Col, Row, Radio, Button } from 'antd';
+import { Col, Row, Radio, Button, Space, Typography } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./PurchasePage.css"
+
+const { Text } = Typography;
 
 function PurchasePage(props) {
     const costValue = props.orderValue;
@@ -26,37 +28,39 @@ function PurchasePage(props) {
             </Row>
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <Col>
-                    <span>Payment</span>
+                    <Text>Payment</Text>
                 </Col>
                 <Col>
-                    <span className='pay-cost-value'>{costValue}</span>
+                    <Text className='pay-cost-value'>{costValue}</Text>
                 </Col>
                 <Col>
-                    <span>Order</span>
+                    <Text>Order</Text>
                 </Col>
                 <Col>
-                    <span className='pay-serial-number'>{serialNumber}</span>
+                    <Text className='pay-serial-number'>{serialNumber}</Text>
                 </Col>
             </Row>
             <Row hidden={payMethod==="PayOnline"?"":"hidden"}>
                 <Col>
-                    <div>Payment Method:</div>
-                    <Radio.Group defaultValue="paypal">
-                        <Radio value="paypal">
-                            <img className="payment-logo" src="Paypal-logo.png" alt="paypal-logo" />
-                        </Radio>
-                        <Radio value="visa">
-                            <img className="payment-logo" src="Visa-logo.png" alt="visa-logo" />
-                        </Radio>
-                    </Radio.Group>
-                    <div>
-                        <Link to="/success"><Button type="primary">Pay Order</Button></Link>
-                    </div>
+                    <Space direction="vertical">
+                        <Text>Payment Method:</Text>
+                        <Radio.Group defaultValue="paypal">
+                            <Radio value="paypal">
+                                <img className="payment-logo" src="/assets/img/Paypal-logo.png" alt="paypal-logo" />
+                            </Radio>
+                            <Radio value="visa">
+                                <img className="payment-logo" src="/assets/img/Visa-logo.png" alt="visa-logo" />
+                            </Radio>
+                        </Radio.Group>
+                        <Text>
+                            <Link to="/success"><Button type="primary">Pay Order</Button></Link>
+                        </Text>
+                    </Space>
                 </Col>
             </Row>
             <Row hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
-                    <div>Please pay your order at least 20 minutes before the movie start.</div>
+                    <Text>Please pay your order at least 20 minutes before the movie start.</Text>
                     <Link to="/order"><Button type="primary">Checkout Order</Button></Link>
                 </Col>
             </Row>
