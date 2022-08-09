@@ -47,7 +47,7 @@ function CinemaList() {
                 title={<a href="https://ant.design">{item.name}</a>}
                 description={item.location}
                 />
-                <button onClick={onInitOrder} cinema={item.name}>Order</button>
+                <button >Order</button>
             </List.Item>
             )}
         />
