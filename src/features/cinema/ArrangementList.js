@@ -28,6 +28,10 @@ function ArrangementList() {
     setTime(e.target.getAttribute("time"));
     setRoom(e.target.getAttribute("room"));
     setPrice(e.target.getAttribute("price"));
+    console.log(date);
+    console.log(time);
+    console.log(room);
+    console.log(price);
   };
 
   const arrangeContent = (
