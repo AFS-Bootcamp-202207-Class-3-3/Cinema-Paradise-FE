@@ -7,7 +7,6 @@ function OrderItem(props) {
   const order=props.order;
   return (
     <>
-      <Divider orientation="left" />
       <Row justify="center">
         <Col span={3}>
           <img alt="orderPic" className="img" src="/assets/img/Lightyear.jpg" />

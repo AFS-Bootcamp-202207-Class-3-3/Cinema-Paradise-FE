@@ -9,14 +9,14 @@ function OrderDetails() {
 
   return (
     <div>
-      <h1>OrderList</h1>
+      <Divider orientation="left">订单详情</Divider>
       <OrderItem order={currentOrder} />
-      <Divider orientation="left" />
-      <Row justify="space-around" align="middle">
+      <Divider orientation="left">规则说明</Divider>
+      {/* <Row justify="space-around" align="middle">
         <Col span={12}>
           <Title level={4}>规则说明</Title>
         </Col>
-      </Row>
+      </Row> */}
       <Row justify="space-around">
         <Col span={12}>
           <Space direction="vertical">

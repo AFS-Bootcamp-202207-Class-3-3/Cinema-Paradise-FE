@@ -1,40 +1,22 @@
-import { Avatar, Button, List } from 'antd';
+import { List } from 'antd';
 import React, { useState,useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { getCinemas } from "../../api/cinema"; 
-import { initData } from './OrderSlice';
-
-const data = [
-  {
-    name: 'Cinema One',
-    location: '490 2nd St, Suite 300',
-  },
-  {
-    name: 'Cinema Two',
-    location: '490 2nd St, Suite 300',
-  },
-  {
-    name: 'Cinema Three',
-    location: '490 2nd St, Suite 300',
-  },
-  {
-    name: 'Cinema Four',
-    location: '490 2nd St, Suite 300',
-  },
-];
+// import { initData } from './OrderSlice';
+import {Link} from "react-router-dom";
 
 function CinemaList() {
   const [cinemas,setCinemas]=useState([]);
-  const dispatch=useDispatch();
+  // const dispatch=useDispatch();
   useEffect(() => {
     getCinemas().then(response=>{
       setCinemas(response.data);
   });
 }, [])
 
-  const onInitOrder=(e) =>{
-    dispatch(initData({"cinema": e.target.getAttribute("cinema")}));
-  }
+  // const onInitOrder=(e) =>{
+  //   dispatch(initData({"cinema": e.target.getAttribute("cinema")}));
+  // }
 
     return (
         <List
@@ -47,7 +29,9 @@ function CinemaList() {
                 title={<a href="https://ant.design">{item.name}</a>}
                 description={item.location}
                 />
+               <Link to="/arrangement">
                 <button >Order</button>
+                </Link>
             </List.Item>
             )}
         />

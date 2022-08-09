@@ -53,7 +53,7 @@ function PurchasePage(props) {
                             </Radio>
                         </Radio.Group>
                         <Text>
-                            <Link to="/success"><Button type="primary">Pay Order</Button></Link>
+                            <Link to="/sucess"><Button type="primary">Pay Order</Button></Link>
                         </Text>
                     </Space>
                 </Col>
@@ -61,7 +61,7 @@ function PurchasePage(props) {
             <Row hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
                     <Text>Please pay your order at least 20 minutes before the movie start.</Text>
-                    <Link to="/order"><Button type="primary">Checkout Order</Button></Link>
+                    <Link to="/orderdetails"><Button type="primary">Checkout Order</Button></Link>
                 </Col>
             </Row>
         </>

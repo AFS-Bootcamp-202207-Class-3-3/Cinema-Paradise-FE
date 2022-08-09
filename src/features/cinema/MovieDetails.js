@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovie } from './MovieDetailSlice';
 import { getMovieDetailsById } from "../../api/movie";
+import CinemaList from './CinemaList';
 
 const { Title, Text } = Typography;
 
@@ -50,8 +51,12 @@ function MovieDetails() {
                 </Col>
 
             </Row>
-
-
+            <Divider orientation="left">上映影院</Divider>
+            <Row justify="center" align="top">
+                <Col span={12}>
+                <CinemaList/>
+                </Col>
+            </Row>
         </>
     )
 

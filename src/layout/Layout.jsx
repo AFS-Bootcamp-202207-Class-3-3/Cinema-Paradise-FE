@@ -6,11 +6,7 @@ const Layout = () => {
     <div>
       <nav>
         <Link to="/">Home</Link> |{" "}
-        <Link to="/about">About</Link>|{" "}
-        <Link to="/orderdetails">order</Link>|{" "}
-        <Link to="/purchase">purchase</Link>|{" "}
-        <Link to="/sucess">sucess</Link>|{" "}
-        <Link to="/cinema">cinema</Link>
+        <Link to="/about">About</Link>
       </nav>
       <div className="content">
         <Outlet />
