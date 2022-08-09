@@ -1,11 +1,14 @@
 import React from 'react';
 import './MovieDetails.css';
 import { Col, Divider, Row, Typography, Space } from 'antd';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const { Title,Text } = Typography;
 
 function MovieDetails (){
+
+    let { movieId } = useParams();
+    console.log(movieId);
 
     return (
         <>

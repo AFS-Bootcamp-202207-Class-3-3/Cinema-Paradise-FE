@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/order" element={<OrderGroup/>} />
           <Route path="/about" element={<About />} />
-          <Route path="/moviedetails" element={<MovieDetails />} />
+          <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
           <Route path="/purchase" element={<PurchasePage />} />
           <Route path="/sucess" element={<SucessPaidment/>} />
           <Route path="/" element={<MovieList/>} />
