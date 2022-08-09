@@ -1,15 +1,16 @@
-const CONTENT=[{
-    "id":"12o",
-    "movie_id":1,
-    "cinema_id":1,
-    "user_id":1,
-    "movie_time":Date.now(),
-    "seat_row":1,
-    "seat_column":1,
-    "ispaid":false,
-    "score":0,
-    "comment":""
-}]
+const CONTENT=[
+    {
+        "user": "user 1",
+        "title": "title 1",
+        "price": 46,
+        "date": 1660021072,
+        "time": "time 1",
+        "cinema": "cinema 1",
+        "room": "room 1",
+        "seat": "seat 1",
+        "paid": false,
+        "id": "1"
+       }]
 
 
 

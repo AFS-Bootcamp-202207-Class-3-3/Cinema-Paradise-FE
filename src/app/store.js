@@ -4,6 +4,6 @@ import orderReducer from "../features/cinema/OrderSlice";
 
 export const store = configureStore({
   reducer: {
-    orderList: orderReducer,
+    currentOrder: orderReducer,
   },
 });
