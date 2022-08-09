@@ -48,7 +48,7 @@ function ArrangementList() {
             title={<a href={item.href}>票价</a>}
             description={item.price}
           />
-          <Link to="/order">
+          <Link to="/purchase">
             <button
               onClick={onClickItem}
             //   href="/order"
