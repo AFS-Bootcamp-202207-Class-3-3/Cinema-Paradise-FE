@@ -1,6 +1,9 @@
 import { Col, Row, Layout, Card, Carousel } from "antd";
 import { Link } from "react-router-dom";
-import MOVIES from "./MOVIES";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovies } from "../../api/movie";
+import { getAllMovies } from "./movieSlice";
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
@@ -22,16 +25,23 @@ const CAROUSEL_IMG_STYLE = {
 
 function MovieList() {
 
-    const movieList = MOVIES;
-    const rotationMovieList = movieList.filter((rotationMovie) => rotationMovie.rotationurl !== "");
+    const dispatch = useDispatch();
+
+    const movieList = useSelector((state) => state.movieList);
+
+    useEffect(() => {
+        getMovies().then((response) => {
+            dispatch(getAllMovies(response.data));
+        });
+    }, [dispatch]);
 
     return (
         <Layout>
             <Content>
                 <Carousel autoplay className="aaaaaaa" style={CAROUSEL_STYLE}>
-                    {rotationMovieList.map((movie) => (
+                    {movieList.filter((rotationMovie) => rotationMovie.rotationImageUrl !== "").map((movie) => (
                         <Link to={{ pathname: `/moviedetails/${movie.id}` }} key={movie.id}>
-                            <img alt="carouselpic" src={movie.rotationurl} style={CAROUSEL_IMG_STYLE} />
+                            <img alt="carouselpic" src={movie.rotationImageUrl} style={CAROUSEL_IMG_STYLE} />
                         </Link>
                     ))}
                 </Carousel>
@@ -43,9 +53,9 @@ function MovieList() {
                                     hoverable
                                     style={CARD_STYLE}
                                     cover={
-                                        <img alt="pic" src={movie.url} />}
+                                        <img alt="pic" src={movie.imageUrl} />}
                                 >
-                                    <Meta title={movie.title} description={movie.description} />
+                                    <Meta title={movie.titleChinese} description={movie.titleEnglish} />
                                 </Card>
                             </Link>
                         </Col>
