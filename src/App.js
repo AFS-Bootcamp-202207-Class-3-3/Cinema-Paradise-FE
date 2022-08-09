@@ -8,6 +8,7 @@ import SucessPaidment from "./pages/SucessPaidment";
 import MovieDetails from "./features/cinema/MovieDetails";
 import PurchasePage from "./features/cinema/PurchasePage";
 import MovieList from "./features/cinema/MovieList";
+import ArrangementList from "./features/cinema/ArrangementList";
 
 function App() {
   return (
@@ -15,11 +16,12 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/order" element={<OrderGroup/>} />
           <Route path="/about" element={<About />} />
-          <Route path="/moviedetails" element={<MovieDetails />} />
+          <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
           <Route path="/purchase" element={<PurchasePage />} />
           <Route path="/sucess" element={<SucessPaidment/>} />
           <Route path="/" element={<MovieList/>} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/arrangement" element={<ArrangementList/>}/>
         </Route>
       </Routes>
   );
