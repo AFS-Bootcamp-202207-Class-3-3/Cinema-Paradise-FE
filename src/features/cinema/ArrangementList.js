@@ -1,4 +1,4 @@
-import { List, Button, Tabs } from "antd";
+import { List, Tabs } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ function ArrangementList() {
     getArrangements().then((response) => {
       dispatch(addArrangements(response.data));
     });
-  }, []);
+  }, [dispatch]);
 
   const [date, setDate] = useState("8月9日");
   const [time, setTime] = useState();
@@ -51,7 +51,7 @@ function ArrangementList() {
           <Link to="/purchase">
             <button
               onClick={onClickItem}
-            //   href="/order"
+              //   href="/order"
               time={item.time}
               room={item.room}
               price={item.price}
