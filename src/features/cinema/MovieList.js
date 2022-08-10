@@ -40,7 +40,7 @@ function MovieList() {
             <Content>
                 <Carousel autoplay className="aaaaaaa" style={CAROUSEL_STYLE}>
                     {movieList.filter((rotationMovie) => rotationMovie.rotationImageUrl !== "").map((movie) => (
-                        <Link to={{ pathname: `/moviedetails/${movie.id}` }} key={movie.id}>
+                        <Link to={{ pathname: `/movies/${movie.id}` }} key={movie.id}>
                             <img alt="carouselpic" src={movie.rotationImageUrl} style={CAROUSEL_IMG_STYLE} />
                         </Link>
                     ))}
@@ -48,7 +48,7 @@ function MovieList() {
                 <Row gutter={[16, 16]} justify="space-evenly">
                     {movieList.map((movie) => (
                         <Col className="gutter-row" span={3} key={movie.id}>
-                            <Link to={{ pathname: `/moviedetails/${movie.id}` }}>
+                            <Link to={{ pathname: `/movies/${movie.id}` }}>
                                 <Card
                                     hoverable
                                     style={CARD_STYLE}
