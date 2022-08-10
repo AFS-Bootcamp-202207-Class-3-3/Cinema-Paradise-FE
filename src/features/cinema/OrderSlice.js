@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState={
-  cinema:"旺旺",
 };
-// const initialState={};
 
 
 export const orderSlice = createSlice({
