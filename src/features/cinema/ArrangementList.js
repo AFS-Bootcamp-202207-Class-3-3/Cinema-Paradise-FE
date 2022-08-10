@@ -2,17 +2,44 @@ import { List, Tabs, Button } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getArrangements } from "../../api/arrangements";
+import { getCurrentArrangements } from "../../api/arrangements";
 import { addArrangements } from "./arrangementSlice";
 import { addContent } from "./OrderSlice";
+import { useSearchParams } from "react-router-dom";
 const { TabPane } = Tabs;
 
 function ArrangementList() {
   const data = useSelector((state) => state.arrangementList);
+  const [searchParams] = useSearchParams();
   const dateTime = new Date();
   const month = dateTime.getMonth() + 1;
   const day = dateTime.getDate();
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getCurrentArrangements(searchParams.get("movieId"),searchParams.get("cinemaId")).then((response) => {
+      dispatch(addArrangements(response.data));
+    });
+  }, [dispatch]);
+
+  const [date, setDate] = useState(month + "月" + day + "日");
+
+  const onChange = (key) => {
+    setDate(key);
+  };
+
+  const onClickItem = (item) => {
+    dispatch(
+      addContent({
+        date: date,
+        time: item.time,
+        room: item.room,
+        price: item.price,
+      })
+    );
+  };
+
+  
   const arrangeFirstDay = [];
   const arrangeSecondDay = [];
   const arrangeThirdDay = [];
@@ -40,30 +67,6 @@ function ArrangementList() {
     }
   }
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    getArrangements().then((response) => {
-      dispatch(addArrangements(response.data));
-    });
-  }, [dispatch]);
-
-  const [date, setDate] = useState(month + "月" + day + "日");
-
-  const onChange = (key) => {
-    setDate(key);
-  };
-
-  const onClickItem = (item) => {
-    dispatch(
-      addContent({
-        date: date,
-        time: item.time,
-        room: item.room,
-        price: item.price,
-      })
-    );
-  };
-
   return (
     <>
       <Tabs defaultActiveKey="1" centered onChange={onChange}>
@@ -89,7 +92,7 @@ function ArrangementList() {
                   description={item.price}
                 />
                 <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>Order</Button>
+                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
                 </Link>
               </List.Item>
             )}
@@ -117,7 +120,7 @@ function ArrangementList() {
                   description={item.price}
                 />
                 <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>Order</Button>
+                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
                 </Link>
               </List.Item>
             )}
@@ -145,7 +148,7 @@ function ArrangementList() {
                   description={item.price}
                 />
                 <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>Order</Button>
+                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
                 </Link>
               </List.Item>
             )}
@@ -173,7 +176,7 @@ function ArrangementList() {
                   description={item.price}
                 />
                 <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>Order</Button>
+                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
                 </Link>
               </List.Item>
             )}
@@ -201,7 +204,7 @@ function ArrangementList() {
                   description={item.price}
                 />
                 <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>Order</Button>
+                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
                 </Link>
               </List.Item>
             )}
