@@ -14,12 +14,12 @@ function MovieDetails() {
     const dispatch = useDispatch();
     const movie = useSelector((state) => state.movieDetail);
     const { movieId } = useParams();
-    
-    useEffect(() =>{
+
+    useEffect(() => {
         getMovieDetailsById(movieId).then((response) => {
             dispatch(getMovie(response.data));
         });
-    },[dispatch, movieId]);
+    }, [dispatch, movieId]);
 
     return (
         <>
@@ -43,14 +43,14 @@ function MovieDetails() {
 
                 </Col>
                 <Col span={4}>
-                    <div className="score">{movie.score}</div>
+                    <div className="score">{movie.score === "0" ? "暂无评分" : movie.score}</div>
                 </Col>
 
             </Row>
             <Divider orientation="left">上映影院</Divider>
             <Row justify="center" align="top">
                 <Col span={12}>
-                <CinemaList/>
+                    <CinemaList />
                 </Col>
             </Row>
         </>
