@@ -1,4 +1,4 @@
-import { Col, Row, Layout, Card, Carousel, BackTop } from "antd";
+import { Col, Row, Layout, Card, Carousel, BackTop, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,10 @@ import { getAllMovies } from "./movieSlice";
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
+const { Text } = Typography;
 
 const CARD_STYLE = {
-    background: '#0092ff',
+    background: '#40a9ff',
     margin: 'auto',
     width: '100%',
     height: 'auto',
@@ -21,6 +22,9 @@ const CAROUSEL_STYLE = {
 const CAROUSEL_IMG_STYLE = {
     height: '50vh',
     margin: 'auto',
+};
+const FOOTER_STYLE = {
+    color: '#40a9ff',
 };
 
 function MovieList() {
@@ -64,7 +68,7 @@ function MovieList() {
                 <BackTop />
             </Content>
             <Footer>
-                foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooot
+                <Text style={FOOTER_STYLE}>礼貌点儿我们 Design ©2022 Created by Manner</Text>
             </Footer>
         </Layout>
     );
