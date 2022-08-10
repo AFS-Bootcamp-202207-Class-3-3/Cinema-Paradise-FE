@@ -14,10 +14,12 @@ function ArrangementList() {
   const dateTime = new Date();
   const month = dateTime.getMonth() + 1;
   const day = dateTime.getDate();
+  const movieId=searchParams.get("movieId");
+  const cinemaId=searchParams.get("cinemaId")
 
   const dispatch = useDispatch();
   useEffect(() => {
-    getCurrentArrangements(searchParams.get("movieId"),searchParams.get("cinemaId")).then((response) => {
+    getCurrentArrangements(movieId,cinemaId).then((response) => {
       dispatch(addArrangements(response.data));
     });
   }, [dispatch]);
