@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import './MovieDetails.css';
 import { Col, Divider, Row, Typography, Space } from 'antd';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovie } from './MovieDetailSlice';
 import { getMovieDetailsById } from "../../api/movie";
