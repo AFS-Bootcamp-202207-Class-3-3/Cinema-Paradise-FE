@@ -15,7 +15,7 @@ function OrderItem(props) {
           <Title level={3}>{order.title}</Title>
           <Space direction="vertical">
             <Text>1张-总价：￥{order.price}</Text>
-            <Text>今天{order.date} {order.time}（国语3D)</Text>
+            <Text>{order.date} {order.time}（国语3D)</Text>
             <Text>{order.cinema}-{order.room} {order.seat}</Text>
             <Divider />
             <Text>请到影院柜台支付完成交易</Text>
