@@ -1,11 +1,10 @@
-import { List, Tabs, Button } from "antd";
+import { List, Tabs } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getArrangements } from "../../api/arrangements";
 import { addArrangements } from "./arrangementSlice";
 import { addContent } from "./OrderSlice";
-// import HashMap from "./HashMap";
 const { TabPane } = Tabs;
 
 function ArrangementList() {
@@ -31,7 +30,7 @@ function ArrangementList() {
     });
   }, [dispatch]);
 
-  const [date, setDate] = useState(month+"月"+day+"日");
+  const [date, setDate] = useState(month + "月" + day + "日");
 
   const onChange = (key) => {
     setDate(key);
