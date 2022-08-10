@@ -26,15 +26,11 @@ function MovieDetails() {
             <Divider orientation="left">电影详情</Divider>
             <Row justify="center" align="top">
                 <Col span={4}>
-                    <Link to="/seats">
                         <img className="image" src={movie.imageUrl} alt="图片"></img>
-                    </Link>
 
                 </Col>
                 <Col span={12}>
-                    <Link to="/">
                         <Title level={2} className="title">{movie.titleChinese}</Title>
-                    </Link>
                     <Space direction="vertical">
                         <Text>导演：{movie.director}</Text>
                         <Text>主演：{movie.actors}</Text>
