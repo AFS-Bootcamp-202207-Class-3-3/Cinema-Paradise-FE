@@ -9,7 +9,7 @@ function OrderItem(props) {
     <>
       <Row justify="center">
         <Col span={3}>
-          <img alt="orderPic" className="img" src="/assets/img/Lightyear.jpg" />
+        <img alt="orderPic" className="img" src={order.imgUrl} />
         </Col>
         <Col span={9}>
           <Title level={3}>{order.title}</Title>

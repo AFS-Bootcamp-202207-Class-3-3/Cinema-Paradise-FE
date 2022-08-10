@@ -1,12 +1,13 @@
 import {List,Button} from "antd";
 import React, {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import {getCinemas} from "../../api/cinema";
 import {addContent} from "./OrderSlice";
 
 function CinemaList() {
   const [cinemas, setCinemas] = useState([]);
+  const currentMovie = useSelector(state=> state.movieDetail);
   const dispatch = useDispatch();
   useEffect(() => {
     getCinemas().then((response) => {
@@ -16,7 +17,7 @@ function CinemaList() {
 
   const onInitOrder = (item) => {
     console.log(item);
-    dispatch(addContent({cinema: item.name}));
+    dispatch(addContent({cinema: item.name,title:currentMovie.titleChinese,imgUrl:currentMovie.imageUrl}));
   };
 
   return (
