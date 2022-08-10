@@ -1,4 +1,4 @@
-import { Col, Row, Layout, Card, Carousel } from "antd";
+import { Col, Row, Layout, Card, Carousel, BackTop } from "antd";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -61,6 +61,7 @@ function MovieList() {
                         </Col>
                     ))}
                 </Row>
+                <BackTop />
             </Content>
             <Footer>
                 foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooot
