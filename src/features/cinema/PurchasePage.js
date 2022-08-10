@@ -1,13 +1,15 @@
 import { Col, Row, Radio, Button, Space, Typography } from 'antd';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import "./PurchasePage.css"
 
 const { Text } = Typography;
 
-function PurchasePage(props) {
-    const costValue = props.orderValue;
-    const serialNumber = props.orderNumber;
+function PurchasePage() {
+    const currentOrder = useSelector(state=> state.currentOrder);
+    console.log(currentOrder);
+    const costValue = currentOrder.price;
 
     const [payMethod, setPayMethod] = useState("PayOnline");
 
@@ -18,7 +20,7 @@ function PurchasePage(props) {
 
     return (
         <>
-            <Row>
+            <Row justify="center">
                 <Col>
                     <Radio.Group onChange={changePayMethod} defaultValue="PayOnline">
                         <Radio.Button value="PayOnline">Pay Online</Radio.Button>
@@ -26,21 +28,21 @@ function PurchasePage(props) {
                     </Radio.Group>
                 </Col>
             </Row>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify="center">
                 <Col>
                     <Text>Payment</Text>
                 </Col>
                 <Col>
                     <Text className='pay-cost-value'>{costValue}</Text>
                 </Col>
-                <Col>
+                {/* <Col>
                     <Text>Order</Text>
                 </Col>
                 <Col>
                     <Text className='pay-serial-number'>{serialNumber}</Text>
-                </Col>
+                </Col> */}
             </Row>
-            <Row hidden={payMethod==="PayOnline"?"":"hidden"}>
+            <Row justify="center" hidden={payMethod==="PayOnline"?"":"hidden"}>
                 <Col>
                     <Space direction="vertical">
                         <Text>Payment Method:</Text>
@@ -53,12 +55,12 @@ function PurchasePage(props) {
                             </Radio>
                         </Radio.Group>
                         <Text>
-                            <Link to="/sucess"><Button type="primary">Pay Order</Button></Link>
+                            <Link to="/sucess"><Button type="primary" disabled={costValue===undefined}>Pay Order</Button></Link>
                         </Text>
                     </Space>
                 </Col>
             </Row>
-            <Row hidden={payMethod==="PayOffline"?"":"hidden"}>
+            <Row justify="center" hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
                     <Text>Please pay your order at least 20 minutes before the movie start.</Text>
                     <Link to="/orderdetails"><Button type="primary">Checkout Order</Button></Link>
