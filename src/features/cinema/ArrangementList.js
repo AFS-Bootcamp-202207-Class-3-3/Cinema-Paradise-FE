@@ -14,15 +14,18 @@ function ArrangementList() {
   const dateTime = new Date();
   const month = dateTime.getMonth() + 1;
   const day = dateTime.getDate();
-  const movieId=searchParams.get("movieId");
-  const cinemaId=searchParams.get("cinemaId")
+  const movieId = searchParams.get("movieId");
+  const cinemaId = searchParams.get("cinemaId");
 
   const dispatch = useDispatch();
   useEffect(() => {
-    getCurrentArrangements(movieId,cinemaId).then((response) => {
+    getCurrentArrangements(
+      movieId,
+      cinemaId
+    ).then((response) => {
       dispatch(addArrangements(response.data));
     });
-  }, [dispatch]);
+  }, [dispatch,movieId,cinemaId]);
 
   const [date, setDate] = useState(month + "月" + day + "日");
 
@@ -41,7 +44,6 @@ function ArrangementList() {
     );
   };
 
-  
   const arrangeFirstDay = [];
   const arrangeSecondDay = [];
   const arrangeThirdDay = [];
