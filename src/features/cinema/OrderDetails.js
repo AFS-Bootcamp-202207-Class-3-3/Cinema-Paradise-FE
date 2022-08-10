@@ -6,7 +6,7 @@ const { Text} = Typography;
 
 function OrderDetails() {
   const currentOrder = useSelector(state=> state.currentOrder);
-
+  console.log(currentOrder);
   return (
     <div>
       <Divider orientation="left">订单详情</Divider>
