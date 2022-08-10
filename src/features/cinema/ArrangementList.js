@@ -1,13 +1,16 @@
-import { List, Tabs } from "antd";
+import { List, Tabs, Button } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getArrangements } from "../../api/arrangements";
 import { addArrangements } from "./arrangementSlice";
 const { TabPane } = Tabs;
 
 function ArrangementList() {
   const data = useSelector((state) => state.arrangementList);
+  const dateTime = new Date();
+  const month = dateTime.getMonth() + 1;
+  const day = dateTime.getDate();
+
   const dispatch = useDispatch();
   useEffect(() => {
     getArrangements().then((response) => {
@@ -24,10 +27,11 @@ function ArrangementList() {
     setDate(key);
   };
 
-  const onClickItem = (e) => {
-    setTime(e.target.getAttribute("time"));
-    setRoom(e.target.getAttribute("room"));
-    setPrice(e.target.getAttribute("price"));
+  const onClickItem = (item) => {
+    console.log(item);
+    setTime(item.time);
+    setRoom(item.room);
+    setPrice(item.price);
     console.log(date);
     console.log(time);
     console.log(room);
@@ -52,17 +56,9 @@ function ArrangementList() {
             title={<a href={item.href}>票价</a>}
             description={item.price}
           />
-          <Link to="/purchase">
-            <button
-              onClick={onClickItem}
-              //   href="/order"
-              time={item.time}
-              room={item.room}
-              price={item.price}
-            >
-              Order
-            </button>
-          </Link>
+          <Button onClick={() => onClickItem(item)} href="/purchase">
+            Order
+          </Button>
         </List.Item>
       )}
     />
@@ -71,19 +67,34 @@ function ArrangementList() {
   return (
     <>
       <Tabs defaultActiveKey="1" centered onChange={onChange}>
-        <TabPane tab="8月9日" key="8月9日">
+        <TabPane
+          tab={month + "月" + day + "日"}
+          key={month + "月" + day + "日"}
+        >
           {arrangeContent}
         </TabPane>
-        <TabPane tab="8月10日" key="8月10日">
+        <TabPane
+          tab={month + "月" + (day + 1) + "日"}
+          key={month + "月" + (day + 1) + "日"}
+        >
           {arrangeContent}
         </TabPane>
-        <TabPane tab="8月11日" key="8月11日">
+        <TabPane
+          tab={month + "月" + (day + 2) + "日"}
+          key={month + "月" + (day + 2) + "日"}
+        >
           {arrangeContent}
         </TabPane>
-        <TabPane tab="8月12日" key="8月12日">
+        <TabPane
+          tab={month + "月" + (day + 3) + "日"}
+          key={month + "月" + (day + 3) + "日"}
+        >
           {arrangeContent}
         </TabPane>
-        <TabPane tab="8月13日" key="8月13日">
+        <TabPane
+          tab={month + "月" + (day + 4) + "日"}
+          key={month + "月" + (day + 4) + "日"}
+        >
           {arrangeContent}
         </TabPane>
       </Tabs>
