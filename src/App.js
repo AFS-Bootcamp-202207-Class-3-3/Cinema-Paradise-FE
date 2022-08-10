@@ -10,7 +10,6 @@ import MovieList from "./features/cinema/MovieList";
 import ArrangementList from "./features/cinema/ArrangementList";
 import OrderDetails from "./features/cinema/OrderDetails";
 import CinemaList from "./features/cinema/CinemaList";
-import SeatsDisplay from "./features/cinema/SeatsDisplay"
 import SelectSeat from "./features/cinema/SelectSeat"
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           <Route path="/purchase" element={<PurchasePage />} />
           <Route path="/sucess" element={<SucessPaidment/>} />
           <Route path="/" element={<MovieList/>} />
-          <Route path="/seatsdisplay" element={<SeatsDisplay/>} />
           <Route path="/selectseat" element={<SelectSeat/>} />
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/arrangement" element={<ArrangementList/>}/>

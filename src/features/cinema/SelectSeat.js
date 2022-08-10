@@ -26,11 +26,11 @@ function SelectSeat() {
     ];
 
     const toggleSeat = (e) => {
-        if (e.target.getAttribute("src") == "/assets/img/seats0.gif" && selectedIndex === -1){
+        if (e.target.getAttribute("src") === "/assets/img/seats0.gif" && selectedIndex === -1){
             e.target.setAttribute("src", "/assets/img/seats2.gif")
             setselectedIndex(e.target.getAttribute("seat-key"))
             sethasSelected(true);
-        } else if (e.target.getAttribute("src") == "/assets/img/seats2.gif"){
+        } else if (e.target.getAttribute("src") === "/assets/img/seats2.gif"){
             setselectedIndex(-1)
             e.target.setAttribute("src", "/assets/img/seats0.gif")
             sethasSelected(false);
