@@ -1,7 +1,8 @@
 import { Col, Row, Radio, Button, Space, Typography } from 'antd';
 import { useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
+import { addContent } from "./OrderSlice";
 import "./PurchasePage.css"
 
 const { Text } = Typography;
@@ -13,8 +14,18 @@ function PurchasePage() {
 
     const [payMethod, setPayMethod] = useState("PayOnline");
 
+    const dispatch = useDispatch();
+
     const changePayMethod = (e) => {
         setPayMethod(e.target.value);
+    }
+
+    const submitPaymentPaid = () => {
+        dispatch(addContent({paid: true}));
+    }
+
+    const submitPaymentNotPaid = () => {
+        dispatch(addContent({paid: false}));
     }
 
 
@@ -58,7 +69,7 @@ function PurchasePage() {
                 </Col>
             </Row>
             <Row justify="center" hidden={payMethod==="PayOnline"?"":"hidden"}>
-                <Link to="/sucess"><Button type="primary" disabled={costValue===undefined}>Pay Order</Button></Link>
+                <Link to="/sucess"><Button type="primary" disabled={costValue===undefined} onClick={submitPaymentPaid}>Pay Order</Button></Link>
             </Row>
             <Row justify="center" hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
@@ -66,7 +77,7 @@ function PurchasePage() {
                 </Col>
             </Row>
             <Row justify="center" hidden={payMethod==="PayOffline"?"":"hidden"}>
-                <Link to="/orderdetails"><Button type="primary" disabled={costValue===undefined}>Checkout Order</Button></Link>
+                <Link to="/orderdetails"><Button type="primary" disabled={costValue===undefined} onClick={submitPaymentNotPaid}>Checkout Order</Button></Link>
             </Row>
         </>
     )
