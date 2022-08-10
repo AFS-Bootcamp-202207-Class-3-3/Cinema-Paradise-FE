@@ -31,7 +31,7 @@ function CinemaList() {
             title={<a href="https://ant.design">{item.name}</a>}
             description={item.location}
           />
-          <Link to="/arrangement">
+          <Link to={{ pathname: `/arrangement?movieId=${currentMovie.id}&cinemaId=${item.id}` }}>
           <Button onClick={() => onInitOrder(item)}>
             Order
           </Button>
