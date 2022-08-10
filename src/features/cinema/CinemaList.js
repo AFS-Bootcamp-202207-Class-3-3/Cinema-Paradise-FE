@@ -1,7 +1,7 @@
 import {List,Button} from "antd";
 import React, {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {getCinemas} from "../../api/cinema";
 import {addContent} from "./OrderSlice";
 
@@ -16,7 +16,6 @@ function CinemaList() {
 
   const onInitOrder = (item) => {
     console.log(item);
-    // dispatch(addContent({cinema: e.target.getAttribute("cinema")}));
     dispatch(addContent({cinema: item.name}));
   };
 
@@ -31,14 +30,11 @@ function CinemaList() {
             title={<a href="https://ant.design">{item.name}</a>}
             description={item.location}
           />
-          <Button href="/arrangement" onClick={() => onInitOrder(item)}>
+          <Link to="/arrangement">
+          <Button onClick={() => onInitOrder(item)}>
             Order
           </Button>
-          {/* <Link to="/arrangement">
-          <button  onClick={onInitOrder} cinema={item.name}>
-            Order
-          </button>
-          </Link> */}
+          </Link>
         </List.Item>
       )}
     />
