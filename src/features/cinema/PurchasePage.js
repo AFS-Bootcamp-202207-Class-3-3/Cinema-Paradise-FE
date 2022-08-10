@@ -54,17 +54,19 @@ function PurchasePage() {
                                 <img className="payment-logo" src="/assets/img/Visa-Logo.png" alt="visa-logo" />
                             </Radio>
                         </Radio.Group>
-                        <Text>
-                            <Link to="/sucess"><Button type="primary" disabled={costValue===undefined}>Pay Order</Button></Link>
-                        </Text>
                     </Space>
                 </Col>
+            </Row>
+            <Row justify="center" hidden={payMethod==="PayOnline"?"":"hidden"}>
+                <Link to="/sucess"><Button type="primary" disabled={costValue===undefined}>Pay Order</Button></Link>
             </Row>
             <Row justify="center" hidden={payMethod==="PayOffline"?"":"hidden"}>
                 <Col>
                     <Text>Please pay your order at least 20 minutes before the movie start.</Text>
-                    <Link to="/orderdetails"><Button type="primary">Checkout Order</Button></Link>
                 </Col>
+            </Row>
+            <Row justify="center" hidden={payMethod==="PayOffline"?"":"hidden"}>
+                <Link to="/orderdetails"><Button type="primary" disabled={costValue===undefined}>Checkout Order</Button></Link>
             </Row>
         </>
     )
