@@ -1,47 +1,43 @@
-import { List, Tabs, Button } from "antd";
+import { Tabs } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getCurrentArrangements } from "../../api/arrangements";
 import { addArrangements } from "./arrangementSlice";
-import { addContent } from "./OrderSlice";
 import { useSearchParams } from "react-router-dom";
+import ArrangementItem from "./ArrangementItem";
 const { TabPane } = Tabs;
 
+function getDay(day) {
+  var today = new Date();
+  var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+  today.setTime(targetday_milliseconds);
+  var tMonth = today.getMonth();
+  var tDate = today.getDate();
+  return tMonth + 1 + "月" + tDate + "日";
+}
+
 function ArrangementList() {
-  const data = useSelector((state) => state.arrangementList);
   const [searchParams] = useSearchParams();
-  const dateTime = new Date();
-  const month = dateTime.getMonth() + 1;
-  const day = dateTime.getDate();
   const movieId = searchParams.get("movieId");
   const cinemaId = searchParams.get("cinemaId");
 
   const dispatch = useDispatch();
   useEffect(() => {
-    getCurrentArrangements(
-      movieId,
-      cinemaId
-    ).then((response) => {
+    getCurrentArrangements(movieId, cinemaId).then((response) => {
       dispatch(addArrangements(response.data));
     });
-  }, [dispatch,movieId,cinemaId]);
+  }, [dispatch, movieId, cinemaId]);
+  const data = useSelector((state) => state.arrangementList);
 
-  const [date, setDate] = useState(month + "月" + day + "日");
+  const firstDay = getDay(0);
+  const secondDay = getDay(1);
+  const thirdDay = getDay(2);
+  const fourthDay = getDay(3);
+  const fifthDay = getDay(4);
 
+  const [date, setDate] = useState(firstDay);
   const onChange = (key) => {
     setDate(key);
-  };
-
-  const onClickItem = (item) => {
-    dispatch(
-      addContent({
-        date: date,
-        time: item.time,
-        room: item.room,
-        price: item.price,
-      })
-    );
   };
 
   const arrangeFirstDay = [];
@@ -49,22 +45,21 @@ function ArrangementList() {
   const arrangeThirdDay = [];
   const arrangeFourthDay = [];
   const arrangeFifthDay = [];
-
   for (var i = 0; i < data.length; i++) {
     switch (data[i].arrangeDate) {
-      case month + "月" + day + "日":
+      case firstDay:
         arrangeFirstDay.push(data[i]);
         break;
-      case month + "月" + (day + 1) + "日":
+      case secondDay:
         arrangeSecondDay.push(data[i]);
         break;
-      case month + "月" + (day + 2) + "日":
+      case thirdDay:
         arrangeThirdDay.push(data[i]);
         break;
-      case month + "月" + (day + 3) + "日":
+      case fourthDay:
         arrangeFourthDay.push(data[i]);
         break;
-      case month + "月" + (day + 4) + "日":
+      case fifthDay:
         arrangeFifthDay.push(data[i]);
         break;
       default:
@@ -74,145 +69,20 @@ function ArrangementList() {
   return (
     <>
       <Tabs defaultActiveKey="1" centered onChange={onChange}>
-        <TabPane
-          tab={month + "月" + day + "日"}
-          key={month + "月" + day + "日"}
-        >
-          <List
-            bordered
-            dataSource={arrangeFirstDay}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={item.href}>放映时间</a>}
-                  description={item.time}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>放映厅</a>}
-                  description={item.room}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>票价</a>}
-                  description={item.price}
-                />
-                <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
-                </Link>
-              </List.Item>
-            )}
-          />
+        <TabPane tab={firstDay} key={firstDay}>
+          <ArrangementItem arrange={arrangeFirstDay} date={date} />
         </TabPane>
-        <TabPane
-          tab={month + "月" + (day + 1) + "日"}
-          key={month + "月" + (day + 1) + "日"}
-        >
-          <List
-            bordered
-            dataSource={arrangeSecondDay}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={item.href}>放映时间</a>}
-                  description={item.time}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>放映厅</a>}
-                  description={item.room}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>票价</a>}
-                  description={item.price}
-                />
-                <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
-                </Link>
-              </List.Item>
-            )}
-          />
+        <TabPane tab={secondDay} key={secondDay}>
+          <ArrangementItem arrange={arrangeSecondDay} date={date} />
         </TabPane>
-        <TabPane
-          tab={month + "月" + (day + 2) + "日"}
-          key={month + "月" + (day + 2) + "日"}
-        >
-          <List
-            bordered
-            dataSource={arrangeThirdDay}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={item.href}>放映时间</a>}
-                  description={item.time}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>放映厅</a>}
-                  description={item.room}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>票价</a>}
-                  description={item.price}
-                />
-                <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
-                </Link>
-              </List.Item>
-            )}
-          />
+        <TabPane tab={thirdDay} key={thirdDay}>
+          <ArrangementItem arrange={arrangeThirdDay} date={date} />
         </TabPane>
-        <TabPane
-          tab={month + "月" + (day + 3) + "日"}
-          key={month + "月" + (day + 3) + "日"}
-        >
-          <List
-            bordered
-            dataSource={arrangeFourthDay}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={item.href}>放映时间</a>}
-                  description={item.time}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>放映厅</a>}
-                  description={item.room}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>票价</a>}
-                  description={item.price}
-                />
-                <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
-                </Link>
-              </List.Item>
-            )}
-          />
+        <TabPane tab={fourthDay} key={fourthDay}>
+          <ArrangementItem arrange={arrangeFourthDay} date={date} />
         </TabPane>
-        <TabPane
-          tab={month + "月" + (day + 4) + "日"}
-          key={month + "月" + (day + 4) + "日"}
-        >
-          <List
-            bordered
-            dataSource={arrangeFifthDay}
-            renderItem={(item) => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href={item.href}>放映时间</a>}
-                  description={item.time}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>放映厅</a>}
-                  description={item.room}
-                />
-                <List.Item.Meta
-                  title={<a href={item.href}>票价</a>}
-                  description={item.price}
-                />
-                <Link to="/selectseat">
-                  <Button onClick={() => onClickItem(item)}>选座购票</Button>
-                </Link>
-              </List.Item>
-            )}
-          />
+        <TabPane tab={fifthDay} key={fifthDay}>
+          <ArrangementItem arrange={arrangeFifthDay} date={date} />
         </TabPane>
       </Tabs>
     </>
