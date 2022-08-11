@@ -79,6 +79,9 @@ function SelectSeat() {
 
     return (
         <>
+            <Row justify="center" align="top">
+                <div className="screen">Screen</div>
+            </Row>
             {seatsArray.map((row, rowIndex) => (
                 <Row justify="center" align="top" key={"row"+rowIndex}>
                     {
@@ -105,6 +108,20 @@ function SelectSeat() {
                     }
                 </Row>
             ))}
+            <Row justify="center">
+                <Col span={3} className="block-height-60">
+                    未选择：
+                    <img src="/assets/img/seats0.gif"/>
+                </Col>
+                <Col span={3} className="block-height-60">
+                    不可选：
+                    <img src="/assets/img/seats1.gif"/>
+                </Col>
+                <Col span={3} className="block-height-60">
+                    已选择：
+                    <img src="/assets/img/seats2.gif"/>
+                </Col>
+            </Row>
             <Row justify="center">
                 <Col>
                     <Text className = "block-height-60">
