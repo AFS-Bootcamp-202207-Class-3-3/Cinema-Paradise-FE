@@ -12,8 +12,8 @@ const SEARCH_STYLE = {
     zIndex: 2,
 };
 const LOGO_STYLE = {
-    width: '8vw',
-    height: 50,
+    width: '6vw',
+    height: '50px',
 };
 
 function Layout() {
