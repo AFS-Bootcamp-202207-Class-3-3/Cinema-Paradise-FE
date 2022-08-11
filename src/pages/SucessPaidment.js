@@ -7,7 +7,7 @@ const SucessPaidment = () => {
     <Result
       status="success"
       title="Successfully Purchased ticket!"
-      subTitle="Order number: 2017182818828182881."
+
       extra={[
         <Link to="/orderdetails">
           <Button type="primary" key="datail">
