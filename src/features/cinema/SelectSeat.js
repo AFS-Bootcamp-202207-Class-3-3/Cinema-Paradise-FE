@@ -58,7 +58,7 @@ function SelectSeat() {
         getChosenSeats(arrangementId).then((response) => {
             setchosenSeatsKeys(convertChosenSeats(response.data))
         });
-    }, []);
+    }, [arrangementId]);
 
     const toggleSeat = (e) => {
         if (e.target.getAttribute("src") === "/assets/img/seats0.gif" && selectedIndex === -1){
