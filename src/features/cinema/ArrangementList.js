@@ -27,7 +27,7 @@ function ArrangementList() {
       dispatch(addArrangements(response.data));
     });
   }, [dispatch, movieId, cinemaId]);
-  
+
   const data = useSelector((state) => state.arrangementList);
 
   const firstDay = getDay(0);
@@ -69,7 +69,7 @@ function ArrangementList() {
 
   return (
     <>
-      <Tabs defaultActiveKey="1" centered onChange={onChange}>
+      <Tabs defaultActiveKey="1" centered animated onChange={onChange}>
         <TabPane tab={firstDay} key={firstDay}>
           <ArrangementItem arrange={arrangeFirstDay} date={date} />
         </TabPane>
