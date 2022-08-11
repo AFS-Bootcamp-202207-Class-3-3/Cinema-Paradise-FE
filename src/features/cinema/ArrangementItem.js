@@ -28,7 +28,7 @@ function ArrangementItem(props) {
           <List.Item.Meta title="放映时间" description={item.time} />
           <List.Item.Meta title="放映厅" description={item.room} />
           <List.Item.Meta title="票价" description={item.price} />
-          <Link to="/selectseat">
+          <Link to={{pathname:`/selectseat?arrangementId=${item.id}`}}>
             <Button onClick={() => onClickItem(item)}>选座购票</Button>
           </Link>
         </List.Item>

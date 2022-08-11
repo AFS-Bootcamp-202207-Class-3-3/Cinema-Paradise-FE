@@ -27,6 +27,7 @@ function ArrangementList() {
       dispatch(addArrangements(response.data));
     });
   }, [dispatch, movieId, cinemaId]);
+  
   const data = useSelector((state) => state.arrangementList);
 
   const firstDay = getDay(0);
