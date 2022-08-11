@@ -10,7 +10,6 @@ const { Text } = Typography;
 
 function PurchasePage() {
     const currentOrder = useSelector(state=> state.currentOrder);
-    console.log(currentOrder);
     const costValue = currentOrder.price;
 
     const [payMethod, setPayMethod] = useState("PayOnline");
@@ -19,18 +18,14 @@ function PurchasePage() {
 
     const changePayMethod = (e) => {
         setPayMethod(e.target.value);
+        dispatch(addContent({paid: e.target.value==="PayOnline"?true:false}));
     }
 
     const submitPaymentPaid = () => {
         dispatch(addContent({paid: true}));
-        console.log(currentOrder);
-        createOrder(currentOrder).then((response) => {
-            dispatch(addContent({id: response.data.id}));
-            });
     }
 
     const submitPaymentNotPaid = () => {
-        dispatch(addContent({paid: false}));
         createOrder(currentOrder).then((response) => {
             dispatch(addContent({id: response.data.id}));
             });

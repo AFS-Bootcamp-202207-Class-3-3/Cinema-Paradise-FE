@@ -1,12 +1,11 @@
-import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
-import {Col, Row, Divider, Space, Typography} from "antd";
-import "./item.css";
+import {Col, Row, Divider, Space, Typography,Button} from "antd";
+import {Link} from "react-router-dom";
+import {  useSelector } from "react-redux";
 const { Text} = Typography;
 
 function OrderDetails() {
   const currentOrder = useSelector(state=> state.currentOrder);
-  console.log(currentOrder);
   return (
     <div>
       <Divider orientation="left">订单详情</Divider>
@@ -18,7 +17,7 @@ function OrderDetails() {
         </Col>
       </Row> */}
       <Row justify="space-around">
-        <Col span={12}>
+        <Col span={8} >
           <Space direction="vertical">
             <Text>（1）提前30分钟取票，否则失效</Text>
             <Text>（2）3次购票未取，则六个月内无法再次购票</Text>
@@ -26,6 +25,16 @@ function OrderDetails() {
             <Text>（4）该账号3次订票后未取票，则六个月内无法再次订票</Text>
           </Space>
         </Col>
+      </Row>
+      <Divider orientation="left">更多</Divider>
+      <Row justify="space-around" align="middle">
+        <Col span={2} >
+          <Space direction="vertical"   align="middle">
+         <Link to={{ pathname: `/movies/${currentOrder.movieId}` }}>
+          <Button key="again" >Buy Again</Button>
+        </Link>
+          </Space>
+          </Col>
       </Row>
     </div>
   );
