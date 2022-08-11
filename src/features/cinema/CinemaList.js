@@ -27,7 +27,7 @@ function CinemaList() {
       renderItem={(item) => (
         <List.Item>
           <List.Item.Meta
-            title={<a href="https://ant.design">{item.name}</a>}
+            title={item.name}
             description={item.location}
           />
           <Link to={{ pathname: `/arrangement?movieId=${currentMovie.id}&cinemaId=${item.id}` }}>
