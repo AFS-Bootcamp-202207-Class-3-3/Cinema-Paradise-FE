@@ -111,15 +111,15 @@ function SelectSeat() {
             <Row justify="center">
                 <Col span={3} className="block-height-60">
                     未选择：
-                    <img src="/assets/img/seats0.gif"/>
+                    <img src="/assets/img/seats0.gif" alt="not-selected-img"/>
                 </Col>
                 <Col span={3} className="block-height-60">
                     不可选：
-                    <img src="/assets/img/seats1.gif"/>
+                    <img src="/assets/img/seats1.gif" alt="cannot-select-img"/>
                 </Col>
                 <Col span={3} className="block-height-60">
                     已选择：
-                    <img src="/assets/img/seats2.gif"/>
+                    <img src="/assets/img/seats2.gif" alt="selected-img"/>
                 </Col>
             </Row>
             <Row justify="center">
