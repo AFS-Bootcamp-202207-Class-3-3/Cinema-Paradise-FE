@@ -42,7 +42,7 @@ function SelectSeat() {
 
     const seatsArray = generateSeatsArray(rowLens);
 
-    const chosenSeats = ["3排4列", "5排10列", "9排7列", "4排4列", "10排3列"];
+    // const chosenSeats = ["3排4列", "5排10列", "9排7列", "4排4列", "10排3列"];
 
     const convertChosenSeats = (chosenSeats) => {
         const RowColRegex = /(\d+)排(\d+)列/;
