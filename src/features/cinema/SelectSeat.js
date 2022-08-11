@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Typography, Button, Popover } from "antd";
+import { Col, Row, Typography, Button, Popover, Divider } from "antd";
 import { useState, useEffect } from "react";
 import "./SelectSeat.css"
 import { useDispatch } from "react-redux";
@@ -30,7 +30,7 @@ function SelectSeat() {
     //     [400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411],
     // ];
 
-    const rowLens = [10, 10, 12, 12, 14, 14, 14, 14, 14, 16, 16]
+    const rowLens = [10, 10, 12, 12, 14, 14, 14, 14, 16, 16]
 
     const generateSeatsArray = (rowLens) => {
         return rowLens.map((rowLen, rowNum) => {
@@ -108,6 +108,9 @@ function SelectSeat() {
                     }
                 </Row>
             ))}
+            <Row>
+                <Divider className="divider"/>
+            </Row>
             <Row justify="center">
                 <Col span={3} className="block-height-60">
                     未选择：
