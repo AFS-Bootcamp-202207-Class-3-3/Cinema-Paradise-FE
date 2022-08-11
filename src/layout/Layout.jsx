@@ -12,8 +12,8 @@ const SEARCH_STYLE = {
     zIndex: 2,
 };
 const LOGO_STYLE = {
-    width: '7vw',
-    height: 45,
+    width: '8vw',
+    height: 50,
 };
 
 function Layout() {
@@ -37,10 +37,9 @@ function Layout() {
 
     return (
         <div>
-            <Header style={{ paddingLeft: 32 }}>
+            <Header>
                 <div className="logo" style={{ float: 'left', color: "white", fontSize: 18 }}>
-                    <img alt="logopic" src="/assets/img/Cinema ParadiseLogo.png" style={LOGO_STYLE}></img>
-                    <span style={{ margin: '0 8px' }}>Cinema Paradise</span>
+                    <img alt="logopic" src="/assets/img/CinemaParadiseLogo12.png" style={LOGO_STYLE}></img>
                 </div>
                 <Menu mode="horizontal" theme="dark" defaultSelectedKeys={['/']} items={items} />
             </Header>
@@ -52,7 +51,7 @@ function Layout() {
                 />
             </div>
             <Outlet></Outlet>
-        </div >
+        </div>
     );
 }
 

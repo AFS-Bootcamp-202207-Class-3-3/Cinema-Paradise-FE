@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { List, Button } from "antd";
+import { List, Button, Row, Col } from "antd";
 import { addContent } from "./OrderSlice";
 import { useDispatch } from "react-redux";
 
@@ -20,20 +20,23 @@ function ArrangementItem(props) {
   };
 
   return (
-    <List
-      bordered
-      dataSource={arrange}
-      renderItem={(item) => (
-        <List.Item>
-          <List.Item.Meta title="放映时间" description={item.time} />
-          <List.Item.Meta title="放映厅" description={item.room} />
-          <List.Item.Meta title="票价" description={item.price} />
-          <Link to="/selectseat">
-            <Button onClick={() => onClickItem(item)}>选座购票</Button>
-          </Link>
-        </List.Item>
-      )}
-    />
+    <Row justify="center" align="top">
+      <Col span={12}>
+        <List
+          dataSource={arrange}
+          renderItem={(item) => (
+            <List.Item>
+              <List.Item.Meta title="放映时间" description={item.time} />
+              <List.Item.Meta title="放映厅" description={item.room} />
+              <List.Item.Meta title="票价" description={item.price} />
+              <Link to={{ pathname: `/selectseat?arrangementId=${item.id}` }}>
+                <Button onClick={() => onClickItem(item)}>选座购票</Button>
+              </Link>
+            </List.Item>
+          )}
+        />
+      </Col>
+    </Row>
   );
 }
 
