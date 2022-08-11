@@ -1,15 +1,23 @@
 import React from "react";
-import { Col, Row, Typography, Button } from "antd";
-import { useState } from "react";
+import { Col, Row, Typography, Button, Popover } from "antd";
+import { useState, useEffect } from "react";
 import "./SelectSeat.css"
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { addContent } from "./OrderSlice";
 import { Link } from "react-router-dom";
+import { getChosenSeats } from "../../api/seats";
+
 const { Text } = Typography;
+
 
 function SelectSeat() {
     const [selectedIndex, setselectedIndex] = useState(-1);
     const [hasSelected, sethasSelected] = useState(false);
+    const [chosenSeatsKeys, setchosenSeatsKeys] = useState([]);
+
+    const [searchParams] = useSearchParams();
+    const arrangementId = searchParams.get("arrangementId");
 
     const dispatch = useDispatch();
 
@@ -22,7 +30,7 @@ function SelectSeat() {
     //     [400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411],
     // ];
 
-    const rowLens = [10, 10, 10, 12, 14, 14, 14, 14, 14, 16, 16];
+    const rowLens = [10, 10, 12, 12, 14, 14, 14, 14, 14, 16, 16]
 
     const generateSeatsArray = (rowLens) => {
         return rowLens.map((rowLen, rowNum) => {
@@ -33,6 +41,24 @@ function SelectSeat() {
     }
 
     const seatsArray = generateSeatsArray(rowLens);
+
+    // const chosenSeats = ["3排4列", "5排10列", "9排7列", "4排4列", "10排3列"];
+
+    const convertChosenSeats = (chosenSeats) => {
+        const RowColRegex = /(\d+)排(\d+)列/;
+        return chosenSeats.map(seatStr => {
+            const result = RowColRegex.exec(seatStr);
+            return parseInt((result[1]-1)*100) + parseInt(result[2]-1);
+        })
+    }
+
+    // const chosenSeatsKeys = convertChosenSeats(chosenSeats);
+
+    useEffect(() => {
+        getChosenSeats(arrangementId).then((response) => {
+            setchosenSeatsKeys(convertChosenSeats(response.data))
+        });
+    }, []);
 
     const toggleSeat = (e) => {
         if (e.target.getAttribute("src") === "/assets/img/seats0.gif" && selectedIndex === -1){
@@ -48,7 +74,6 @@ function SelectSeat() {
 
     const submitSeat = () => {
         const seatStr = `${Math.floor(selectedIndex/100)+ 1}排${Math.floor(selectedIndex%100) + 1}列`;
-        console.log(seatStr);
         dispatch(addContent({seat: seatStr}));
     }
 
@@ -57,9 +82,24 @@ function SelectSeat() {
             {seatsArray.map((row, rowIndex) => (
                 <Row justify="center" align="top" key={"row"+rowIndex}>
                     {
-                        row.map((seatNumber, colIndex) => (
+                        row.map((seatNumber, colIndex) => chosenSeatsKeys.includes(seatNumber)?(
+                            <Popover content="这个位子被选掉了(っ °Д °;)っ" key={"row"+rowIndex+"col"+colIndex+"pop"}>
+                                <Col span = {1} className = "block-height-60" key={"row"+rowIndex+"col"+colIndex}>
+                                    <img key={seatNumber} 
+                                    seat-key = {seatNumber} 
+                                    src="/assets/img/seats1.gif"
+                                    alt="emptySeatImage" 
+                                    onClick={toggleSeat}/>
+                                </Col>
+                            </Popover>
+                        ):(
                             <Col span = {1} className = "block-height-60" key={"row"+rowIndex+"col"+colIndex}>
-                                <img key={seatNumber} seat-key = {seatNumber} className="cursor-pointer" src="/assets/img/seats0.gif" alt="emptySeatImage" onClick={toggleSeat}/>
+                                <img key={seatNumber} 
+                                seat-key = {seatNumber} 
+                                className="cursor-pointer"
+                                src="/assets/img/seats0.gif"
+                                alt="emptySeatImage" 
+                                onClick={toggleSeat}/>
                             </Col>
                         ))
                     }
