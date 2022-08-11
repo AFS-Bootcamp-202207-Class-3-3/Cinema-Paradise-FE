@@ -1,16 +1,14 @@
 import React from "react";
-import { QRCodeCanvas } from "qrcode.react";
 import { SmileOutlined } from "@ant-design/icons";
 import { Result } from "antd";
 
 const About = () => {
   return (
     <div>
-      About Me
-      <QRCodeCanvas value="https://reactjs.org/" />,
       <Result
         icon={<SmileOutlined />}
-        title="If you encounter problems, please contact us!"
+        title="感谢选择天堂电影院进行网上购票！"
+        subTitle="Cảm ơn đã chọn ra phim thiên đường để mua vé trực tuyến!"
       />
     </div>
   );
