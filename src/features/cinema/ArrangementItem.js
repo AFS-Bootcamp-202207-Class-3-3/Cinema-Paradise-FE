@@ -25,15 +25,15 @@ function ArrangementItem(props) {
       renderItem={(item) => (
         <List.Item>
           <List.Item.Meta
-            title={<a href={item.href}>放映时间</a>}
+            title="放映时间"
             description={item.time}
           />
           <List.Item.Meta
-            title={<a href={item.href}>放映厅</a>}
+            title="放映厅"
             description={item.room}
           />
           <List.Item.Meta
-            title={<a href={item.href}>票价</a>}
+            title="票价"
             description={item.price}
           />
           <Link to="/selectseat">
