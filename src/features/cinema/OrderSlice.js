@@ -1,9 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState={
+  user:"guest",
 };
-
-
 export const orderSlice = createSlice({
   name: "currentOrder",
   initialState,
