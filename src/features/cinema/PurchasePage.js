@@ -1,5 +1,6 @@
 import { Col, Row, Radio, Button, Space, Typography } from 'antd';
 import { useState } from 'react';
+import {createOrder} from "../../api/order";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { addContent } from "./OrderSlice";
@@ -22,10 +23,17 @@ function PurchasePage() {
 
     const submitPaymentPaid = () => {
         dispatch(addContent({paid: true}));
+        console.log(currentOrder);
+        createOrder(currentOrder).then((response) => {
+            dispatch(addContent({id: response.data.id}));
+            });
     }
 
     const submitPaymentNotPaid = () => {
         dispatch(addContent({paid: false}));
+        createOrder(currentOrder).then((response) => {
+            dispatch(addContent({id: response.data.id}));
+            });
     }
 
 

@@ -18,7 +18,8 @@ function OrderItem(props) {
             <Text>{order.date} {order.time}（国语3D)</Text>
             <Text>{order.cinema}-{order.room} {order.seat}</Text>
             <Divider />
-            <Text>请到影院柜台支付完成交易</Text>
+            <Text hidden={order.paid}>请到影院柜台支付完成交易</Text>
+            <Text hidden={!order.paid}>请到影院柜台凭身份证取票</Text>
           </Space>
         </Col>
       </Row>

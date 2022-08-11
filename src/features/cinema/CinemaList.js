@@ -16,8 +16,7 @@ function CinemaList() {
   }, []);
 
   const onInitOrder = (item) => {
-    console.log(item);
-    dispatch(addContent({cinema: item.name,title:currentMovie.titleChinese,imgUrl:currentMovie.imageUrl}));
+    dispatch(addContent({cinema: item.name,cinemaId:item.id,title:currentMovie.titleChinese,imgUrl:currentMovie.imageUrl,movieId:currentMovie.id}));
   };
 
   return (
@@ -33,7 +32,7 @@ function CinemaList() {
           />
           <Link to={{ pathname: `/arrangement?movieId=${currentMovie.id}&cinemaId=${item.id}` }}>
           <Button onClick={() => onInitOrder(item)}>
-            Order
+            选座购票
           </Button>
           </Link>
         </List.Item>

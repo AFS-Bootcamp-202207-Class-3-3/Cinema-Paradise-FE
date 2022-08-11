@@ -9,5 +9,5 @@ export const getOrderDetailsById = (id) => {
 };
 
 export const createOrder = (order) => {
-    return api.post("/todos",order.order);
+    return api.post("/orders",order);
 };
