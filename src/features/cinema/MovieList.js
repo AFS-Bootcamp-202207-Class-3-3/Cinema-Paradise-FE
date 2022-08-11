@@ -9,7 +9,7 @@ const { Content } = Layout;
 const { Meta } = Card;
 
 const CARD_STYLE = {
-    background: '#40a9ff',
+    background: '#FFFAFA',
     margin: 'auto',
     width: '100%',
     height: 'auto',
