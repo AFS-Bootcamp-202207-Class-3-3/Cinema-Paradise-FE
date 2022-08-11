@@ -22,8 +22,8 @@ function OrderItem(props) {
             <Text hidden={!order.paid}>请到影院柜台凭身份证取票</Text>
           </Space>
         </Col>
-        <Col span={9}>
-          </Col>
+        {/* <Col span={9}>
+          </Col> */}
       </Row>
     </>
   );
