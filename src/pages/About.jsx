@@ -1,6 +1,6 @@
 import React from "react";
 import { SmileOutlined } from "@ant-design/icons";
-import { Result, Col, Row, Divider, Space, Typography } from "antd";
+import { Result, Col, Row, Space, Typography } from "antd";
 const { Text} = Typography;
 const About = () => {
   return (
