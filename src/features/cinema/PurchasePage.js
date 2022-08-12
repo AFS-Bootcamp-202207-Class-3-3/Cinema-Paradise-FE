@@ -101,11 +101,6 @@ function PurchasePage() {
           </Button>
         </Link>
       </Row>
-      <Row justify="center" hidden={payMethod === "PayOffline" ? "" : "hidden"}>
-        <Col>
-          <Text>请在电影开场前20分钟支付你的订单</Text>
-        </Col>
-      </Row>
       <Row
         justify="center"
         gutter={16}
