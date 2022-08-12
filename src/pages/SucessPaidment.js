@@ -17,15 +17,15 @@ const SucessPaidment = () => {
   return (
     <Result
       status="success"
-      title="Successfully Purchased ticket!"
+      title="购票成功!"
       extra={[
         <Link to="/orderdetails">
           <Button type="primary" key="datail" onClick={onSubmitPaidOrder}>
-            Check Detail
+           确认订单
           </Button>
         </Link>,
          <Link to="/">
-          <Button key="back" >Back to home</Button>
+          <Button key="back" >返回首页</Button>
         </Link>,
       ]}
     />
