@@ -19,21 +19,24 @@ function OrderDetails() {
       <Row justify="space-around">
         <Col span={8} >
           <Space direction="vertical">
-            <Text>（1）提前30分钟取票，否则失效</Text>
-            <Text>（2）3次购票未取，则六个月内无法再次购票</Text>
-            <Text>（3）电影放映前出示订单界面进行付款取票，否则失效</Text>
-            <Text>（4）该账号3次订票后未取票，则六个月内无法再次订票</Text>
+            <Text>（1）请提前30分钟取票</Text>
+            <Text>（2）该账号3次购票未取，则六个月内无法再次购票</Text>
+            <Text>（3）请在电影放映前出示订单界面进行付款取票</Text>
+            <Text>（4）该账号3次订票后未完成支付，则六个月内无法再次订票</Text>
           </Space>
         </Col>
       </Row>
-      <Divider orientation="left">更多</Divider>
-      <Row justify="space-around" align="middle">
+      <Divider orientation="left">更多操作</Divider>
+      <Row justify="center" align="middle">
         <Col span={2} >
-          <Space direction="vertical"   align="middle">
          <Link to={{ pathname: `/movies/${currentOrder.movieId}` }}>
-          <Button key="again" >Buy Again</Button>
+          <Button key="again" type="primary">再次购买</Button>
         </Link>
-          </Space>
+        </Col>
+        <Col span={2} >
+        <Link to="/">
+          <Button key="backToHome"  >返回首页</Button>
+        </Link>
           </Col>
       </Row>
     </div>

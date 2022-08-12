@@ -10,7 +10,7 @@ export const orderSlice = createSlice({
   reducers: {
     addContent:(state,action) =>{
       state = {...state, ...action.payload};
-      console.log(state);
+      // console.log(state);
       return state;
     }
   },
@@ -18,3 +18,4 @@ export const orderSlice = createSlice({
 
 export const {initData,addContent} = orderSlice.actions;
 export default orderSlice.reducer;
+

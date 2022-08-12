@@ -27,7 +27,7 @@ function OrderItem(props) {
             <Text>{order.room}-{order.seat}</Text>
             <QRCodeCanvas value={QRcodeValue} />
             <Divider />
-            <Text > 请凭借二维码到影院柜台{order.paid ? '取票' : '支付完成交易'}</Text>
+            <Title level={5} > 请凭借二维码到影院自助机{order.paid ? '取票' : '或柜台支付'}</Title>
             <Title level={3}>注意妥善保管此票据！</Title>
           </Space>
         </Col>
