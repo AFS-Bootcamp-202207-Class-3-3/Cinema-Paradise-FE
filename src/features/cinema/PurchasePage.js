@@ -1,4 +1,4 @@
-import { Col, Row, Radio, Button, Space, Typography } from "antd";
+import { Col, Row, Radio, Button, Space, Typography, Divider } from "antd";
 import { useState } from "react";
 import { createOrder } from "../../api/order";
 import { useSelector, useDispatch } from "react-redux";
@@ -40,18 +40,20 @@ function PurchasePage() {
       <Row justify="center">
         <Col>
           <Radio.Group onChange={changePayMethod} defaultValue="PayOnline">
-            <Radio.Button value="PayOnline">Pay Online</Radio.Button>
-            <Radio.Button value="PayOffline">Pay Offline</Radio.Button>
+            <Space size="large">
+              <Radio.Button value="PayOnline">线上支付</Radio.Button>
+              <Radio.Button value="PayOffline">线下支付</Radio.Button>
+            </Space>
           </Radio.Group>
         </Col>
       </Row>
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify="center">
-        <Col>
-          <Text>Payment</Text>
+      <Row justify="center" gutter={16}>
+        <Divider />
+        <Col span={8}>
+          <Text strong>支付金额：</Text>
+          <Text className="pay-cost-value">￥{costValue}</Text>
         </Col>
-        <Col>
-          <Text className="pay-cost-value">{costValue}</Text>
-        </Col>
+        <Divider />
         {/* <Col>
                     <Text>Order</Text>
                 </Col>
@@ -59,28 +61,34 @@ function PurchasePage() {
                     <Text className='pay-serial-number'>{serialNumber}</Text>
                 </Col> */}
       </Row>
-      <Row justify="center" hidden={payMethod === "PayOnline" ? "" : "hidden"}>
-        <Col>
+      <Row
+        justify="center"
+        gutter={16}
+        hidden={payMethod === "PayOnline" ? "" : "hidden"}
+      >
+        <Col span={8}>
           <Space direction="vertical">
-            <Text>Payment Method:</Text>
-            <Radio.Group defaultValue="paypal">
-              <Radio value="paypal">
-                <img
-                  className="payment-logo"
-                  src="/assets/img/Paypal-Logo.png"
-                  alt="paypal-logo"
-                />
-              </Radio>
-              <Radio value="visa">
-                <img
-                  className="payment-logo"
-                  src="/assets/img/Visa-Logo.png"
-                  alt="visa-logo"
-                />
-              </Radio>
-            </Radio.Group>
+            <Text strong>支付方式：</Text>
           </Space>
         </Col>
+      </Row>
+      <Row justify="center" hidden={payMethod === "PayOnline" ? "" : "hidden"}>
+        <Radio.Group defaultValue="paypal">
+          <Radio value="paypal">
+            <img
+              className="payment-logo"
+              src="/assets/img/Paypal-Logo.png"
+              alt="paypal-logo"
+            />
+          </Radio>
+          <Radio value="visa">
+            <img
+              className="payment-logo"
+              src="/assets/img/Visa-Logo.png"
+              alt="visa-logo"
+            />
+          </Radio>
+        </Radio.Group>
       </Row>
       <Row justify="center" hidden={payMethod === "PayOnline" ? "" : "hidden"}>
         <Link to="/sucess">
@@ -89,25 +97,27 @@ function PurchasePage() {
             disabled={costValue === undefined}
             onClick={submitPaymentPaid}
           >
-            Pay Order
+            支付订单
           </Button>
         </Link>
       </Row>
       <Row justify="center" hidden={payMethod === "PayOffline" ? "" : "hidden"}>
         <Col>
-          <Text>
-            Please pay your order at least 20 minutes before the movie start.
-          </Text>
+          <Text>请在电影开场前20分钟支付你的订单</Text>
         </Col>
       </Row>
-      <Row justify="center" hidden={payMethod === "PayOffline" ? "" : "hidden"}>
+      <Row
+        justify="center"
+        gutter={16}
+        hidden={payMethod === "PayOffline" ? "" : "hidden"}
+      >
         <Link to="/orderdetails">
           <Button
             type="primary"
             disabled={costValue === undefined}
             onClick={submitPaymentNotPaid}
           >
-            Checkout Order
+            确认订单
           </Button>
         </Link>
       </Row>
