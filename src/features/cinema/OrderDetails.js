@@ -10,19 +10,14 @@ function OrderDetails() {
     <div>
       <Divider orientation="left">订单详情</Divider>
       <OrderItem order={currentOrder} />
-      <Divider orientation="left">规则说明</Divider>
-      {/* <Row justify="space-around" align="middle">
-        <Col span={12}>
-          <Title level={4}>规则说明</Title>
-        </Col>
-      </Row> */}
+      <Divider orientation="left">友情提示</Divider>
       <Row justify="space-around">
         <Col span={8} >
           <Space direction="vertical">
-            <Text>（1）请提前30分钟取票</Text>
-            <Text>（2）该账号3次购票未取，则六个月内无法再次购票</Text>
-            <Text>（3）请在电影放映前出示订单界面进行付款取票</Text>
-            <Text>（4）该账号3次订票后未完成支付，则六个月内无法再次订票</Text>
+            <Text>（1）购票之后无法退换票</Text>
+            <Text>（2）请在电影放映前出示订单界面完成付款</Text>
+            <Text>（3）请提前15分钟取票,并在电影放映前5分钟检票入场</Text>
+            <Text>（4）如果自助机支付或取票遇到问题，请及时联系柜台工作人员</Text>
           </Space>
         </Col>
       </Row>
