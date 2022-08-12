@@ -45,7 +45,7 @@ function MovieList() {
                         </Link>
                     ))}
                 </Carousel>
-                <Divider />
+                <Divider orientation="left">热门影片</Divider>
                 <Row gutter={[16, 16]} justify="space-evenly">
                     {movieList.map((movie) => (
                         <Col className="gutter-row" span={3} key={movie.id}>
