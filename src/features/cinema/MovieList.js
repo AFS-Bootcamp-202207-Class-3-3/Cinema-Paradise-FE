@@ -1,4 +1,4 @@
-import { BackTop, Card, Carousel, Col, Layout, Row } from "antd";
+import { BackTop, Card, Carousel, Col, Layout, Row, Divider } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,10 +9,10 @@ const { Content } = Layout;
 const { Meta } = Card;
 
 const CARD_STYLE = {
-    background: '#40a9ff',
-    margin: 'auto',
-    width: '100%',
-    height: 'auto',
+    background: "#FFFAFA",
+    margin: "auto",
+    width: "100%",
+    height: "400px",
 };
 const CAROUSEL_STYLE = {
     height: '50vh',
@@ -38,13 +38,14 @@ function MovieList() {
     return (
         <Layout>
             <Content>
-                <Carousel autoplay className="aaaaaaa" style={CAROUSEL_STYLE}>
+                <Carousel autoplay style={CAROUSEL_STYLE}>
                     {movieList.filter((rotationMovie) => rotationMovie.rotationImageUrl !== "").map((movie) => (
                         <Link to={{ pathname: `/movies/${movie.id}` }} key={movie.id}>
                             <img alt="carouselpic" src={movie.rotationImageUrl} style={CAROUSEL_IMG_STYLE} />
                         </Link>
                     ))}
                 </Carousel>
+                <Divider orientation="left">热门影片</Divider>
                 <Row gutter={[16, 16]} justify="space-evenly">
                     {movieList.map((movie) => (
                         <Col className="gutter-row" span={3} key={movie.id}>
@@ -53,7 +54,7 @@ function MovieList() {
                                     hoverable
                                     style={CARD_STYLE}
                                     cover={
-                                        <img alt="pic" src={movie.imageUrl} />}
+                                        <img alt="pic" src={movie.imageUrl} style={{ height: '300px' }} />}
                                 >
                                     <Meta title={movie.titleChinese} description={movie.titleEnglish} />
                                 </Card>

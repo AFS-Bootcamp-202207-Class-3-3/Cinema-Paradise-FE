@@ -5,6 +5,7 @@ import { getCurrentArrangements } from "../../api/arrangements";
 import { addArrangements } from "./arrangementSlice";
 import { useSearchParams } from "react-router-dom";
 import ArrangementItem from "./ArrangementItem";
+import Steps1 from "./Steps1";
 const { TabPane } = Tabs;
 
 function getDay(day) {
@@ -69,6 +70,7 @@ function ArrangementList() {
 
   return (
     <>
+      <Steps1 />
       <Tabs defaultActiveKey="1" centered animated onChange={onChange}>
         <TabPane tab={firstDay} key={firstDay}>
           <ArrangementItem arrange={arrangeFirstDay} date={date} />
