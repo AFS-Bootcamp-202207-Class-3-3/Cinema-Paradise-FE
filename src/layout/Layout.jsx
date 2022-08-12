@@ -12,7 +12,7 @@ const SEARCH_STYLE = {
     zIndex: 2,
 };
 const LOGO_STYLE = {
-    width: '6vw',
+    width: '8vw',
     height: '50px',
 };
 
@@ -20,8 +20,8 @@ function Layout() {
     const navigate = useNavigate();
 
     const items = [
-        { label: <Link to="/">Home</Link>, key: "/" },
-        { label: <Link to="/about">About</Link>, key: "/about" },
+        { label: <Link to="/">首页</Link>, key: "/" },
+        { label: <Link to="/about">关于</Link>, key: "/about" },
     ];
 
     const onSearchMovieName = (searchtext) => {
